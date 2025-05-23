@@ -6,6 +6,7 @@ use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -81,5 +82,13 @@ class User extends Authenticatable
     public function assignRole(UserRole $role): void
     {
         $this->update(['role' => $role]);
+    }
+
+    /**
+     * Get the prompt logs for the user.
+     */
+    public function promptLogs(): HasMany
+    {
+        return $this->hasMany(PromptLog::class, 'anonymous_user');
     }
 }

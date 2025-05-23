@@ -1,0 +1,72 @@
+/* Light theme (default) */
+body.theme-light {
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #4b5563; /* gray-600 */
+    --text-accent: #f97316; /* orange-500 */
+    --bg-primary: #f3f4f6; /* gray-100 */
+    --bg-secondary: #ffffff; /* white */
+    --border-color: #e5e7eb; /* gray-200 */
+}
+
+/* Dark theme */
+body.theme-dark {
+    --text-primary: #f9fafb; /* gray-50 */
+    --text-secondary: #d1d5db; /* gray-300 */
+    --text-accent: #facc15; /* yellow-400 */
+    --bg-primary: #111827; /* gray-900 */
+    --bg-secondary: #1f2937; /* gray-800 */
+    --border-color: #374151; /* gray-700 */
+}
+
+body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav a, footer p {
+    color: var(--text-secondary);
+}
+
+header nav a:hover {
+    color: var(--text-accent);
+}
+
+.dark\:text-white { color: var(--text-primary) !important; }
+.dark\:text-gray-300 { color: var(--text-secondary) !important; }
+.dark\:text-yellow-400 { color: var(--text-accent) !important; }
+.dark\:bg-gray-900 { background-color: var(--bg-primary) !important; }
+.dark\:bg-gray-800 { background-color: var(--bg-secondary) !important; }
+.dark\:border-gray-700 { border-color: var(--border-color) !important; }
+
+.text-orange-500 { color: var(--text-accent); }
+.bg-orange-500 { background-color: var(--text-accent); }
+.hover\:bg-orange-600:hover {
+    background-color: #ea580c; /* darker orange */
+}
+
+.dark\:bg-yellow-400 { background-color: var(--text-accent); }
+.dark\:hover\:bg-yellow-500:hover {
+    background-color: #eab308; /* darker yellow */
+}
+
+/* Additional styling for thematic elements can go here */
+/* For example, if you have specific Hercules/AI imagery */
+
+.hero-section-bg {
+    /* background-image: url('/path/to/hercules-ai-themed-background.jpg'); */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Ensure Tailwind utility classes take precedence or are augmented correctly */
+
+/* Circular gradient frame: transparent center fading to secondary bg at edges */
+.radial-fade-circle {
+    background: radial-gradient(circle, transparent 70%, var(--bg-secondary) 100%);
+}
+
+/* Adjust if --bg-secondary is not #1f2937 in dark mode, or use a specific color */
+/* body.theme-dark .radial-fade-circle {
+    background: radial-gradient(circle, var(--bg-primary) 60%, #1f2937 100%);
+} */

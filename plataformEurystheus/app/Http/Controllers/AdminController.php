@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
 use App\Models\User;
+use App\Models\PromptLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(10);
+        $totalUsers = User::count();
+        // Placeholder for home visits - this requires a mechanism to track visits
+        $homeVisits = 0; // Replace with actual tracking logic later
+
+        $promptLogContents = PromptLog::orderBy('created_at', 'desc')->take(50)->pluck('content');
         
-        return view('admin.index', compact('users'));
+        $users = User::paginate(10); // Keep existing user pagination for role management
+
+        return view('admin.index', compact('totalUsers', 'homeVisits', 'promptLogContents', 'users'));
     }
 
     public function updateRole(Request $request, User $user)

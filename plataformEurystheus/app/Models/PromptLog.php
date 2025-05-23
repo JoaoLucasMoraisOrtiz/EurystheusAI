@@ -24,4 +24,9 @@ class PromptLog extends Model
     {
         return $this->hasMany(self::class, 'parent_id');
     }
+
+    public function llmResponse()
+    {
+        return $this->hasOne(LlmResponse::class);
+    }
 }
