@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>EurystheusAI - Pricing Plans</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="{{ asset('css/marketing.css') }}" rel="stylesheet">
@@ -43,12 +44,13 @@
                     <p class="text-orange-500 dark:text-yellow-400 text-4xl font-extrabold mb-4">Free</p>
                     <p class="text-gray-600 dark:text-gray-400 mb-6">Perfeito para explorar o poder da engenharia de prompt automatizada. Dê o primeiro passo na sua jornada hercúlea.</p>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-2 mb-8 flex-grow">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 15 gerações de prompt/mês</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Acesso a templates básicos para começar rápido</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Suporte da comunidade</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 10 prompts por dia</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Acesso aos blueprints básicos</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Suporte da comunidade</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Testes limitados de execução</li>
                     </ul>
-                    <a href="{{ route('register') }}?plan=free" class="mt-auto w-full text-center bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-3 px-6 rounded-lg transition duration-150">
-                        Get Started
+                    <a href="{{ route('register') }}?plan=free" onclick="trackButtonClick('sales_free_plan')" class="mt-auto w-full text-center bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-3 px-6 rounded-lg transition duration-150">
+                        Começar Grátis
                     </a>
                 </div>
 
@@ -57,23 +59,20 @@
                     <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 text-orange-500 dark:text-yellow-400 px-3 py-1 text-sm font-semibold rounded-full shadow">Most Popular</span>
                     <h2 class="text-2xl font-bold mb-2">Hero</h2>
                     <div class="mb-4">
-                        <p class="text-4xl font-extrabold">$12<span class="text-xl font-normal">/month</span></p>
-                        {{-- Add toggle for annual payment later --}}
-                        {{-- <label class="mt-2 text-sm opacity-90">
-                            <input type="checkbox" class="form-checkbox text-white focus:ring-white" id="annual-toggle-hero">
-                            Pagar Anual e Ganhar 2 Meses Grátis
-                        </label> --}}
+                        <span class="text-4xl font-extrabold">R$ 97</span>
+                        <span class="text-lg opacity-90">/mês</span>
                     </div>
                     <p class="opacity-90 mb-6">Para profissionais e criadores que não têm tempo a perder. Libere todo o potencial da IA para resultados ilimitados.</p>
                     <ul class="space-y-2 mb-8 flex-grow">
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Gerações de prompt ilimitadas</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Acesso a <strong>toda a biblioteca</strong> de templates avançados</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Histórico e execução direta de prompts</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> <strong>Crie e salve seus próprios blueprints</strong> para replicar o sucesso</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> <strong>Suporte prioritário</strong> para nunca ficar travado</li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> <strong>Prompts ilimitados</strong></li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> Todos os blueprints premium</li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> Execução de prompts ilimitada</li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> Suporte prioritário</li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> Novos recursos em primeira mão</li>
+                        <li class="flex items-center"><span class="text-green-300 mr-2">✓</span> Templates exclusivos</li>
                     </ul>
-                    <a href="{{ route('register') }}?plan=hero" class="mt-auto w-full text-center bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-black text-orange-500 dark:text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-150 shadow-md">
-                        Começar Com o Plano Hero
+                    <a href="{{ route('register') }}?plan=hero" onclick="trackButtonClick('sales_hero_plan')" class="mt-auto w-full text-center bg-white hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-black text-orange-500 dark:text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-150 shadow-md">
+                        🚀 Escolher Hero
                     </a>
                 </div>
 
@@ -83,13 +82,15 @@
                      <p class="text-orange-500 dark:text-yellow-400 text-4xl font-extrabold mb-4">Custom</p>
                     <p class="text-gray-600 dark:text-gray-400 mb-6">Soluções sob medida para equipes e empresas que buscam integrar o poder da EurystheusAI em sua escala.</p>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-2 mb-8 flex-grow">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Tudo do plano Hero, e mais:</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Descontos por volume para sua equipe</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Gerente de conta dedicado</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Integrações customizadas e acesso à API</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Tudo do Hero</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> API dedicada</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Blueprints customizados</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Suporte 24/7</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Treinamento da equipe</li>
+                        <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> SLA garantido</li>
                     </ul>
-                    <a href="mailto:sales@eurystheus.ai?subject=Titan Plan Inquiry" class="mt-auto w-full text-center bg-gray-800 hover:bg-gray-900 dark:bg-gray-200 dark:hover:bg-gray-300 text-white dark:text-gray-900 font-semibold py-3 px-6 rounded-lg transition duration-150">
-                        Contact Sales
+                    <a href="mailto:contato@eurystheusai.com?subject=Interesse no Plano Titan" onclick="trackButtonClick('sales_titan_plan')" class="mt-auto w-full text-center bg-orange-500 hover:bg-orange-600 dark:bg-yellow-400 dark:hover:bg-yellow-500 text-white dark:text-gray-900 font-semibold py-3 px-6 rounded-lg transition duration-150">
+                        Falar com Vendas
                     </a>
                 </div>
             </section>
@@ -99,12 +100,22 @@
                 <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">O Que Nossos Heróis Estão Dizendo</h2>
                 <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-600 dark:text-gray-300 italic">"A EurystheusAI economizou para nossa equipe cerca de 10 horas por semana em P&D. O que antes era um processo de tentativa e erro, agora é uma linha de produção de resultados."</p>
-                        <p class="mt-4 text-right text-gray-700 dark:text-gray-400 font-semibold">- Nome do Cliente, Cargo, Empresa</p>
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">"Consegui triplicar a qualidade dos meus prompts em apenas uma semana. O ROI foi imediato!"</p>
+                        <div class="font-semibold text-gray-800 dark:text-white">
+                            Marina S. - Content Creator
+                        </div>
                     </div>
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-600 dark:text-gray-300 italic">"Eu não sou programador, mas com a EurystheusAI consigo criar prompts que geram scripts e análises complexas. É um verdadeiro superpoder."</p>
-                        <p class="mt-4 text-right text-gray-700 dark:text-gray-400 font-semibold">- Nome do Cliente, Profissão</p>
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">"Economizo 3+ horas por dia com prompts que realmente funcionam. Revolucionou meu workflow!"</p>
+                        <div class="font-semibold text-gray-800 dark:text-white">
+                            Carlos R. - Empresário
+                        </div>
                     </div>
                 </div>
             </section>
@@ -112,18 +123,18 @@
             <section class="mt-20 text-center">
                  <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Frequently Asked Questions</h2>
                  <div class="max-w-3xl mx-auto text-left space-y-4">
-                    <details class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <summary class="font-semibold text-orange-500 dark:text-yellow-400 cursor-pointer">What is EurystheusAI?</summary>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">É uma plataforma de IA que constrói automaticamente a "engenharia de prompt" ideal para você. Em vez de adivinhar como pedir algo a um LLM, você simplesmente descreve seu problema e a EurystheusAI cria a instrução perfeita para obter o melhor resultado possível.</p>
-                    </details>
-                    <details class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <summary class="font-semibold text-orange-500 dark:text-yellow-400 cursor-pointer">How does the 'Hero' plan differ from the free 'Apprentice' plan?</summary>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">O plano Hero é para uso profissional e remove todos os limites. Você obtém gerações ilimitadas, acesso a todos os templates e, o mais importante, a capacidade de salvar seus próprios "blueprints" para reutilizar suas melhores estratégias de prompt, economizando ainda mais tempo.</p>
-                    </details>
-                    <details class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                        <summary class="font-semibold text-orange-500 dark:text-yellow-400 cursor-pointer">Can I upgrade or downgrade my plan?</summary>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">Sim! Você pode mudar de plano a qualquer momento no seu painel. O upgrade é imediato e o sistema calcula a diferença automaticamente. Sem complicações.</p>
-                    </details>
+                     <details class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                         <summary class="font-semibold text-gray-800 dark:text-white cursor-pointer">Como funciona a garantia de 14 dias?</summary>
+                         <p class="text-gray-600 dark:text-gray-300 mt-3">Se não ficar 100% satisfeito com os resultados, devolvemos seu dinheiro sem perguntas.</p>
+                     </details>
+                     <details class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                         <summary class="font-semibold text-gray-800 dark:text-white cursor-pointer">Posso cancelar a qualquer momento?</summary>
+                         <p class="text-gray-600 dark:text-gray-300 mt-3">Sim! Não há contratos ou taxas de cancelamento. Você pode cancelar com um clique.</p>
+                     </details>
+                     <details class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                         <summary class="font-semibold text-gray-800 dark:text-white cursor-pointer">Que modelos de IA são suportados?</summary>
+                         <p class="text-gray-600 dark:text-gray-300 mt-3">Nossos prompts funcionam com ChatGPT, Claude, Gemini, e todos os principais modelos de IA.</p>
+                     </details>
                  </div>
             </section>
         </main>
@@ -135,6 +146,46 @@
             </div>
         </footer>
     </div>
+    
+    {{-- Analytics and Tracking JavaScript --}}
+    <script>
+        // Track page view on load
+        document.addEventListener('DOMContentLoaded', function() {
+            trackPageView('sales');
+        });
+
+        // Function to track page views
+        function trackPageView(page) {
+            fetch('/api/analytics/page-view', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                body: JSON.stringify({
+                    page: page,
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(error => console.log('Analytics error:', error));
+        }
+
+        // Function to track button clicks
+        function trackButtonClick(element) {
+            fetch('/api/analytics/button-click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                body: JSON.stringify({
+                    element: element,
+                    page: 'sales',
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(error => console.log('Analytics error:', error));
+        }
+    </script>
+    
     {{-- app.js is now loaded via @vite in the head --}}
     <script src="{{ asset('js/marketing.js') }}"></script>
 </body>

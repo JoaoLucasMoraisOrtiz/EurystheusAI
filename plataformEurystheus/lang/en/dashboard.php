@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Dashboard Main
+    'title' => 'Dashboard - EurystheusAI',
+    'subtitle' => 'AI-Powered Problem Solving Platform',
+    'welcome_back' => 'Welcome back',
+    'overview' => 'Overview',
+    
+    // Prompt Management
+    'prompts' => 'Prompts',
+    'prompt_scopes' => 'Prompt Scopes',
+    'create_prompt' => 'Create New Prompt',
+    'edit_prompt' => 'Edit Prompt',
+    'delete_prompt' => 'Delete Prompt',
+    'prompt_title' => 'Prompt Title',
+    'prompt_content' => 'Prompt Content',
+    'prompt_scope' => 'Prompt Scope',
+    'prompt_objective' => 'Objective',
+    'prompt_description' => 'Description',
+    'no_prompts' => 'No prompts available',
+    'prompts_found' => 'prompts found',
+    'prioritize' => 'Prioritize',
+    'show_details' => 'Show Details',
+    'hide_details' => 'Hide Details',
+    
+    // Form Fields
+    'title_placeholder' => 'Enter prompt title...',
+    'content_placeholder' => 'Describe your problem or question in detail...',
+    'scope_placeholder' => 'e.g., Business, Technology, Research...',
+    'constraints' => 'Constraints/Limitations',
+    'constraints_placeholder' => 'What are your limitations or constraints?',
+    'available_data' => 'Available Data/Information',
+    'data_placeholder' => 'What data or information do you have?',
+    'target_audience' => 'Target Audience/Stakeholders',
+    'audience_placeholder' => 'Who is your target audience?',
+    'output_format' => 'Desired Output Format/Result',
+    'output_format_placeholder' => 'How should the output be formatted?',
+    'deadlines' => 'Deadlines/Success Metrics',
+    'deadlines_placeholder' => 'What are your deadlines or success criteria?',
+    'generate_blueprint' => 'Generate Blueprint',
+    'admin_features' => 'Admin Features',
+    'admin_privileges_message' => 'You have administrative privileges. You can manage users and system settings.',
+    'prompt_blueprints_execution' => 'Your Prompt Blueprints & Execution',
+    'unnamed_problem' => 'Unnamed Problem',
+    'generated_prompt_blueprints' => 'Generated Prompt Blueprints',
+    'prompt' => 'Prompt',
+    'enter_placeholder' => 'Enter :placeholder',
+    'no_placeholders_message' => 'This prompt has no placeholders to fill.',
+    'execution_result' => 'Execution Result',
+    'no_generated_prompts_message' => 'No generated prompts found for this log, or there was an issue decoding them.',
+    'no_llm_response_message' => 'No LLM response recorded for this prompt log yet.',
+    'no_prompt_blueprints_message' => 'You haven\'t created any prompt blueprints yet. Free users can create blueprints, and paid users can execute them here.',
+    'free_user_dashboard' => 'Free User Dashboard',
+    'free_tier_welcome' => 'Welcome to the free tier! You can create prompt blueprints to get started.',
+    'free_tier_generator_info' => 'Use our',
+    'prompt_blueprint_generator' => 'Prompt Blueprint Generator',
+    'create_new_templates' => 'to create new prompt templates.',
+    'upgrade_message' => 'Upgrade to a paid plan to execute your generated prompts and access premium features!',
+    'processing_prompt' => 'Processing your prompt...',
+    'submit_prompt' => 'Submit Prompt',
+    'clear_form' => 'Clear Form',
+    
+    // AI Responses
+    'ai_response' => 'AI Response',
+    'response_generated' => 'Response Generated',
+    'no_response' => 'No response yet',
+    'generating_response' => 'Generating AI response...',
+    'response_error' => 'Error generating response',
+    'retry_response' => 'Retry',
+    
+    // Statistics
+    'total_prompts' => 'Total Prompts',
+    'completed_prompts' => 'Completed',
+    'pending_prompts' => 'Pending',
+    'this_month' => 'This Month',
+    'last_response' => 'Last Response',
+    'avg_response_time' => 'Avg. Response Time',
+    
+    // Actions & Buttons
+    'execute_prompt' => 'Execute Prompt',
+    'rerun_prompt' => 'Rerun Prompt',
+    'copy_response' => 'Copy Response',
+    'share_prompt' => 'Share Prompt',
+    'bookmark_prompt' => 'Bookmark',
+    'report_issue' => 'Report Issue',
+    
+    // Filters & Sorting
+    'filter_by_scope' => 'Filter by Scope',
+    'sort_by' => 'Sort by',
+    'sort_newest' => 'Newest First',
+    'sort_oldest' => 'Oldest First',
+    'sort_priority' => 'Priority',
+    'sort_title' => 'Title',
+    'all_scopes' => 'All Scopes',
+    
+    // Messages
+    'prompt_created' => 'Prompt created successfully!',
+    'prompt_updated' => 'Prompt updated successfully!',
+    'prompt_deleted' => 'Prompt deleted successfully!',
+    'response_copied' => 'Response copied to clipboard!',
+    'operation_failed' => 'Operation failed. Please try again.',
+    'confirm_delete' => 'Are you sure you want to delete this prompt?',
+    
+    // Empty States
+    'no_prompts_message' => 'You haven\'t created any prompts yet. Start by creating your first prompt!',
+    'no_responses_message' => 'No AI responses generated yet.',
+    
+    // Help & Tips
+    'help' => 'Help',
+    'tips' => 'Tips',
+    'tip_title' => 'Pro Tip',
+    'tip_content' => 'Use specific and detailed prompts for better AI responses. Include context and desired output format.',
+    'keyboard_shortcuts' => 'Keyboard Shortcuts',
+    'shortcut_new' => 'Ctrl+N: New Prompt',
+    'shortcut_submit' => 'Ctrl+Enter: Submit Form',
+    
+    // Settings
+    'user_settings' => 'User Settings',
+    'preferences' => 'Preferences',
+    'notification_settings' => 'Notifications',
+    'privacy_settings' => 'Privacy',
+    'account_settings' => 'Account',
+    
+    // Time Formatting
+    'just_now' => 'just now',
+    'minutes_ago' => 'minutes ago',
+    'hours_ago' => 'hours ago',
+    'days_ago' => 'days ago',
+    'weeks_ago' => 'weeks ago',
+    'months_ago' => 'months ago',
+];

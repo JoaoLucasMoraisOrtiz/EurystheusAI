@@ -1,0 +1,80 @@
+<?php
+
+return [
+    // Navigation & Header
+    'app_name' => 'EurystheusAI',
+    'dashboard' => 'Painel',
+    'profile' => 'Perfil',
+    'logout' => 'Sair',
+    'language' => 'Idioma',
+    'welcome' => 'Bem-vindo',
+    'home' => 'Início',
+    'about' => 'Sobre',
+    'contact' => 'Contato',
+    'login' => 'Entrar',
+    'register' => 'Registrar',
+    
+    // Common Actions
+    'submit' => 'Enviar',
+    'cancel' => 'Cancelar',
+    'save' => 'Salvar',
+    'delete' => 'Excluir',
+    'edit' => 'Editar',
+    'view' => 'Visualizar',
+    'search' => 'Pesquisar',
+    'filter' => 'Filtrar',
+    'reset' => 'Redefinir',
+    'clear' => 'Limpar',
+    'back' => 'Voltar',
+    'next' => 'Próximo',
+    'previous' => 'Anterior',
+    'continue' => 'Continuar',
+    'close' => 'Fechar',
+    'open' => 'Abrir',
+    'expand' => 'Expandir',
+    'collapse' => 'Recolher',
+    'loading' => 'Carregando...',
+    'please_wait' => 'Aguarde...',
+    
+    // Status & Messages
+    'success' => 'Sucesso',
+    'error' => 'Erro',
+    'warning' => 'Aviso',
+    'info' => 'Informação',
+    'required' => 'Obrigatório',
+    'optional' => 'Opcional',
+    'yes' => 'Sim',
+    'no' => 'Não',
+    'enabled' => 'Habilitado',
+    'disabled' => 'Desabilitado',
+    'active' => 'Ativo',
+    'inactive' => 'Inativo',
+    
+    // Time & Dates
+    'created_at' => 'Criado em',
+    'updated_at' => 'Atualizado em',
+    'date' => 'Data',
+    'time' => 'Hora',
+    'today' => 'Hoje',
+    'yesterday' => 'Ontem',
+    'tomorrow' => 'Amanhã',
+    
+    // User & Roles
+    'user' => 'Usuário',
+    'users' => 'Usuários',
+    'admin' => 'Administrador',
+    'role' => 'Função',
+    'roles' => 'Funções',
+    'permissions' => 'Permissões',
+    
+    // File & Data
+    'file' => 'Arquivo',
+    'files' => 'Arquivos',
+    'upload' => 'Enviar',
+    'download' => 'Baixar',
+    'export' => 'Exportar',
+    'import' => 'Importar',
+    'data' => 'Dados',
+    'settings' => 'Configurações',
+    'configuration' => 'Configuração',
+];

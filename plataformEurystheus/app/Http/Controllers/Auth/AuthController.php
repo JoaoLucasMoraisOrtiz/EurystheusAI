@@ -24,8 +24,14 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            $user = Auth::user();
+            // Require email verification
+            if (! $user->hasVerifiedEmail()) {
+                Auth::logout();
+                return redirect()->route('verification.notice')
+                    ->with('error', 'Você precisa verificar seu e-mail antes de continuar.');
+            }
             $request->session()->regenerate();
-            
             return redirect()->intended('/dashboard');
         }
 
@@ -53,9 +59,11 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Log in user and send email verification
         Auth::login($user);
-
-        return redirect('/dashboard');
+        $user->sendEmailVerificationNotification();
+        // Redirect to verification notice
+        return redirect()->route('verification.notice');
     }
 
     public function logout(Request $request)

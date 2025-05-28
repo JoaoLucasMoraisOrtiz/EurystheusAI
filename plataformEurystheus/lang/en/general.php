@@ -1,0 +1,80 @@
+<?php
+
+return [
+    // Navigation & Header
+    'app_name' => 'EurystheusAI',
+    'dashboard' => 'Dashboard',
+    'profile' => 'Profile',
+    'logout' => 'Logout',
+    'language' => 'Language',
+    'welcome' => 'Welcome',
+    'home' => 'Home',
+    'about' => 'About',
+    'contact' => 'Contact',
+    'login' => 'Login',
+    'register' => 'Register',
+    
+    // Common Actions
+    'submit' => 'Submit',
+    'cancel' => 'Cancel',
+    'save' => 'Save',
+    'delete' => 'Delete',
+    'edit' => 'Edit',
+    'view' => 'View',
+    'search' => 'Search',
+    'filter' => 'Filter',
+    'reset' => 'Reset',
+    'clear' => 'Clear',
+    'back' => 'Back',
+    'next' => 'Next',
+    'previous' => 'Previous',
+    'continue' => 'Continue',
+    'close' => 'Close',
+    'open' => 'Open',
+    'expand' => 'Expand',
+    'collapse' => 'Collapse',
+    'loading' => 'Loading...',
+    'please_wait' => 'Please wait...',
+    
+    // Status & Messages
+    'success' => 'Success',
+    'error' => 'Error',
+    'warning' => 'Warning',
+    'info' => 'Information',
+    'required' => 'Required',
+    'optional' => 'Optional',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'enabled' => 'Enabled',
+    'disabled' => 'Disabled',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    
+    // Time & Dates
+    'created_at' => 'Created at',
+    'updated_at' => 'Updated at',
+    'date' => 'Date',
+    'time' => 'Time',
+    'today' => 'Today',
+    'yesterday' => 'Yesterday',
+    'tomorrow' => 'Tomorrow',
+    
+    // User & Roles
+    'user' => 'User',
+    'users' => 'Users',
+    'admin' => 'Administrator',
+    'role' => 'Role',
+    'roles' => 'Roles',
+    'permissions' => 'Permissions',
+    
+    // File & Data
+    'file' => 'File',
+    'files' => 'Files',
+    'upload' => 'Upload',
+    'download' => 'Download',
+    'export' => 'Export',
+    'import' => 'Import',
+    'data' => 'Data',
+    'settings' => 'Settings',
+    'configuration' => 'Configuration',
+];

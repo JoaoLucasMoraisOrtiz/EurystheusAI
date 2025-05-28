@@ -13,6 +13,35 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MarketingController::class, 'home'])->name('marketing.home'); // New root route
 Route::get('/sales', [MarketingController::class, 'sales'])->name('marketing.sales'); // New sales page route
 
+// Language switching route
+Route::get('/language/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'pt_BR'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('language.switch');
+
+// Additional static pages
+Route::view('/terms', 'marketing.terms')->name('marketing.terms');
+Route::view('/privacy', 'marketing.privacy')->name('marketing.privacy');
+// Email Verification Routes
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 // Authentication Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -24,13 +53,12 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 // Protected Routes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         if (auth()->user()->isFree()) {
             return app(FreeDashboardController::class)->show();
         }
-        // For paid users, DashboardController@index will be called.
-        return app(DashboardController::class)->index(); 
+        return app(DashboardController::class)->index();
     })->name('dashboard');
 
     // Route for free users to submit their scope and get prompt suggestions
@@ -51,4 +79,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::patch('/users/{user}/role', [AdminController::class, 'updateRole'])->name('users.role.update');
     });
+});
+
+// Analytics Routes (can be accessed without authentication)
+Route::prefix('api/analytics')->group(function () {
+    Route::post('/page-view', [App\Http\Controllers\AnalyticsController::class, 'trackPageView']);
+    Route::post('/button-click', [App\Http\Controllers\AnalyticsController::class, 'trackButtonClick']);
 });
