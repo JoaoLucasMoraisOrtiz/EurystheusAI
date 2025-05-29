@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FreeDashboardController;
 use App\Http\Controllers\MarketingController; // Added MarketingController
+use App\Http\Controllers\TranslationController; // Added TranslationController
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () { // Commented out old root route
@@ -78,6 +79,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::patch('/users/{user}/role', [AdminController::class, 'updateRole'])->name('users.role.update');
+
+        // Translation Management Routes
+        Route::get('/translations/{file?}', [TranslationController::class, 'index'])->name('translations.index');
+        Route::post('/translations/update', [TranslationController::class, 'update'])->name('translations.update');
     });
 });
 

@@ -9,3 +9,42 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* Custom utility classes from home.blade.php */
+@layer utilities {
+    .nav-link {
+        @apply px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors;
+    }
+    .nav-link-mobile {
+        @apply block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors;
+    }
+    .hero-eyebrow {
+        @apply text-sm font-semibold uppercase tracking-wider text-yellow-400;
+    }
+    .hero-card {
+        @apply bg-gray-800 bg-opacity-70 backdrop-blur-md p-6 md:p-8 rounded-xl shadow-2xl border border-gray-700;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(253, 186, 116, 0.1), 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+    .hero-card-title {
+        @apply text-xl font-semibold text-yellow-400 mb-3;
+    }
+    .hero-card-list li {
+        @apply flex items-center mb-2 text-gray-300;
+    }
+    .hero-card-list li svg {
+        @apply w-5 h-5 text-yellow-500 mr-2 flex-shrink-0;
+    }
+    .btn-primary {
+        @apply inline-block px-8 py-3 text-base font-semibold text-gray-900 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg shadow-lg hover:from-yellow-500 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all transform hover:scale-105;
+    }
+    .btn-secondary {
+        @apply inline-block px-8 py-3 text-base font-semibold text-yellow-400 bg-gray-800 border-2 border-yellow-400 rounded-lg shadow-lg hover:bg-yellow-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all transform hover:scale-105;
+    }
+    .floating-ai-btn {
+        @apply fixed bottom-6 right-6 bg-gradient-to-br from-yellow-400 to-orange-500 text-gray-900 p-4 rounded-full shadow-xl hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 z-50;
+    }
+}

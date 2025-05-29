@@ -39,6 +39,9 @@
         .alert.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .alert.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .pagination { margin-top: 20px; }
+        
+        .translation-btn { transition: all 0.3s ease; }
+        .translation-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
@@ -70,6 +73,33 @@
                 <h3>Prompt Logs (Recent)</h3>
                 <p>{{ $promptLogContents->count() }}</p>
                  <small>(Showing latest 50)</small>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Translation Management</h2>
+            <p>Manage language translations for the website interface.</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <a href="{{ route('admin.translations.index', 'marketing') }}" 
+                   class="translation-btn"
+                   style="background: #3498db; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    Marketing Translations
+                </a>
+                <a href="{{ route('admin.translations.index', 'general') }}" 
+                   class="translation-btn"
+                   style="background: #2ecc71; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    General Translations
+                </a>
+                <a href="{{ route('admin.translations.index', 'auth') }}" 
+                   class="translation-btn"
+                   style="background: #e74c3c; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    Auth Translations
+                </a>
+                <a href="{{ route('admin.translations.index', 'dashboard') }}" 
+                   class="translation-btn"
+                   style="background: #f39c12; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    Dashboard Translations
+                </a>
             </div>
         </div>
 

@@ -2,11 +2,11 @@
 
 return [
     // Page Meta
-    'page_title' => 'EurystheusAI - Plataforma de Resolução de Problemas com IA',
+    'page_title' => 'EurystheusAI - Conquiste Seus Desafios de IA',
     
     // Hero Section
-    'hero_title' => 'Conquiste Seus Maiores Desafios com IA',
-    'hero_subtitle' => 'Transforme problemas complexos em vitórias épicas com o poder da EurystheusAI',
+    'hero_title' => 'Liberte o Poder da IA com Eurystheus',
+    'hero_subtitle' => 'Gere prompts profissionais em segundos e alcance resultados 10x melhores com seus modelos de IA favoritos.',
     'hero_cta' => 'Comece Grátis',
     'hero_secondary_cta' => 'Ver Demonstração',
     'hero_trusted_by' => 'Confiado por milhares de profissionais mundialmente',
@@ -22,7 +22,64 @@ return [
     'nav_login' => 'Entrar',
     'nav_signup' => 'Cadastrar',
     'nav_dashboard' => 'Painel',
-    
+
+    // New Nav Keys for Redesign
+    'nav_shop' => 'Loja',
+    'nav_about_us' => 'Sobre Nós',
+    'nav_contact_us' => 'Contato',
+
+    // Hero Section - Redesign
+    'hero_eyebrow' => 'BENEFÍCIOS DA PLATAFORMA',
+    'hero_title_main' => 'Conquiste Seus Maiores Desafios com IA',
+    'hero_left_subtitle' => 'Desbloqueie o poder total da plataforma com o Expert Eurystheus',
+    'hero_left_item1' => 'Prompts profissionais para todos os casos de uso',
+    'hero_left_item2' => 'Alcance resultados 10x melhores',
+    'hero_left_item3' => 'Economize horas todos os dias',
+    'hero_left_button' => 'Comece Gratuitamente',
+    'hero_right_subtitle' => 'Recursos de ponta para todas as suas necessidades',
+    'hero_right_item1' => 'Intuitivo e fácil de usar',
+    'hero_right_item2' => 'Opções avançadas de personalização',
+    'hero_right_item3' => 'Suporte premium 24/7',
+    'hero_right_button' => 'Explorar Recursos',
+
+    // Hero Section Features (New Design)
+    'hero_feature_1' => 'Prompts profissionais em segundos',
+    'hero_feature_2' => 'Resultados 10x melhores com IA',
+    'hero_feature_3' => 'Economia de horas todo dia',
+
+    // Hero Section Buttons & Sub-CTA (New Design)
+    'hero_button_try_free' => '🚀 Experimentar Grátis',
+    'hero_button_see_plans' => '💎 Ver Planos',
+    'hero_sub_cta' => 'Sem cartão de crédito • Comece em 30 segundos',
+
+    // Trusted By Section (New Design)
+    'trusted_by_heading' => 'Confiado por criadores em todo o mundo',
+    'stats_prompts_generated_label' => 'Prompts Gerados',
+    'stats_active_users_label' => 'Usuários Ativos',
+    'stats_satisfaction_label' => 'Satisfação',
+    'stats_availability_label' => 'Disponível',
+
+    // Why EurystheusAI Section (New Design)
+    'why_title' => 'Por que EurystheusAI?',
+    'why_subtitle' => 'Transforme sua relação com IA. De iniciante a expert em minutos.',
+    'why_card_1_title' => 'Precisão nos Prompts',
+    'why_card_1_desc' => 'Nossos prompts são testados e otimizados para entregar resultados excepcionais em qualquer modelo de IA.',
+    'why_card_2_title' => 'Velocidade Épica',
+    'why_card_2_desc' => 'De ideias vagas a prompts profissionais em segundos. Economize horas todo dia.',
+    'why_card_3_title' => 'Resultados Garantidos',
+    'why_card_3_desc' => '14 dias de garantia. Se não revolucionar seu workflow, devolvemos seu dinheiro.',
+
+    // Final CTA Section (New Design)
+    'final_cta_heading' => 'Pronto Para Conquistar Seus 12 Trabalhos?',
+    'final_cta_subheading' => 'Junte-se a milhares de criadores que já transformaram seus maiores desafios em conquistas épicas com a EurystheusAI.',
+    'final_cta_button_start_free' => '🎯 Começar Gratuitamente',
+    'final_cta_button_go_premium' => '⚡ Ir Direto Pro Premium',
+    'final_cta_guarantee_info' => '💝 Garantia de 14 dias • 🚀 Setup em 30 segundos • ⭐ Suporte premium',
+
+    // Footer (New Design)
+    'footer_copyright' => 'Todos os direitos reservados.',
+    'footer_tagline_text' => 'Dominando a IA, Honrando a Lenda.',
+
     // Features Section
     'features_title' => 'Recursos Poderosos para Cada Desafio',
     'features_subtitle' => 'Descubra como o EurystheusAI pode transformar sua abordagem de resolução de problemas',
@@ -149,4 +206,61 @@ return [
     'contact_us' => 'Entre em Contato',
     'request_demo' => 'Solicitar Demonstração',
     'view_all' => 'Ver Todos',
+
+    // Sales Page
+    'sales_page_title' => 'EurystheusAI - Planos de Preços',
+    'sales_header_brand' => 'EurystheusAI',
+    'sales_main_heading_1' => 'O Poder Certo Para Cada',
+    'sales_main_heading_2' => 'Desafio',
+    'sales_main_subheading' => 'Do seu primeiro experimento à automação em escala, temos o plano perfeito para transformar seus desafios em vitórias. Todos os planos pagos incluem uma <strong class="font-semibold">garantia de 14 dias de satisfação ou seu dinheiro de volta.</strong>',
+
+    'sales_plan_apprentice_title' => 'Apprentice',
+    'sales_plan_apprentice_price' => 'Grátis',
+    'sales_plan_apprentice_desc' => 'Perfeito para explorar o poder da engenharia de prompt automatizada. Dê o primeiro passo na sua jornada hercúlea.',
+    'sales_plan_apprentice_feat1' => '10 prompts por dia',
+    'sales_plan_apprentice_feat2' => 'Acesso aos blueprints básicos',
+    'sales_plan_apprentice_feat3' => 'Suporte da comunidade',
+    'sales_plan_apprentice_feat4' => 'Testes limitados de execução',
+    'sales_plan_apprentice_cta' => 'Começar Grátis',
+
+    'sales_plan_hero_badge' => 'Mais Popular',
+    'sales_plan_hero_title' => 'Hero',
+    'sales_plan_hero_price' => 'R$ 97',
+    'sales_plan_hero_period' => '/mês',
+    'sales_plan_hero_desc' => 'Para profissionais e criadores que não têm tempo a perder. Libere todo o potencial da IA para resultados ilimitados.',
+    'sales_plan_hero_feat1' => '<strong>Prompts ilimitados</strong>',
+    'sales_plan_hero_feat2' => 'Todos os blueprints premium',
+    'sales_plan_hero_feat3' => 'Execução de prompts ilimitada',
+    'sales_plan_hero_feat4' => 'Suporte prioritário',
+    'sales_plan_hero_feat5' => 'Novos recursos em primeira mão',
+    'sales_plan_hero_feat6' => 'Templates exclusivos',
+    'sales_plan_hero_cta' => '🚀 Escolher Hero',
+
+    'sales_plan_titan_title' => 'Titan',
+    'sales_plan_titan_price' => 'Personalizado',
+    'sales_plan_titan_desc' => 'Soluções sob medida para equipes e empresas que buscam integrar o poder da EurystheusAI em sua escala.',
+    'sales_plan_titan_feat1' => 'Tudo do Hero',
+    'sales_plan_titan_feat2' => 'API dedicada',
+    'sales_plan_titan_feat3' => 'Blueprints customizados',
+    'sales_plan_titan_feat4' => 'Suporte 24/7',
+    'sales_plan_titan_feat5' => 'Treinamento da equipe',
+    'sales_plan_titan_feat6' => 'SLA garantido',
+    'sales_plan_titan_cta' => 'Falar com Vendas',
+
+    'sales_testimonials_heading' => 'O Que Nossos Heróis Estão Dizendo',
+    'sales_testimonial_1_text' => '"Consegui triplicar a qualidade dos meus prompts em apenas uma semana. O ROI foi imediato!"',
+    'sales_testimonial_1_author' => 'Marina S. - Content Creator',
+    'sales_testimonial_2_text' => '"Economizo 3+ horas por dia com prompts que realmente funcionam. Revolucionou meu workflow!"',
+    'sales_testimonial_2_author' => 'Carlos R. - Empresário',
+
+    'sales_faq_heading' => 'Perguntas Frequentes',
+    'sales_faq_q1' => 'Como funciona a garantia de 14 dias?',
+    'sales_faq_a1' => 'Se não ficar 100% satisfeito com os resultados, devolvemos seu dinheiro sem perguntas.',
+    'sales_faq_q2' => 'Posso cancelar a qualquer momento?',
+    'sales_faq_a2' => 'Sim! Não há contratos ou taxas de cancelamento. Você pode cancelar com um clique.',
+    'sales_faq_q3' => 'Que modelos de IA são suportados?',
+    'sales_faq_a3' => 'Nossos prompts funcionam com ChatGPT, Claude, Gemini, e todos os principais modelos de IA.',
+
+    'sales_footer_rights' => 'Todos os direitos reservados.',
+    'sales_footer_tagline' => 'Capacitando Seus Trabalhos de IA.',
 ];
