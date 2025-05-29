@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\UserRole;
 use App\Models\User;
 use App\Models\PromptLog;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,8 +20,13 @@ class AdminController extends Controller
         $promptLogContents = PromptLog::orderBy('created_at', 'desc')->take(50)->pluck('content');
         
         $users = User::paginate(10); // Keep existing user pagination for role management
+        
+        // Get promotions data
+        $totalPromotions = Promotion::count();
+        $activePromotions = Promotion::where('is_active', true)->count();
+        $currentPromotion = Promotion::getActivePromotion();
 
-        return view('admin.index', compact('totalUsers', 'homeVisits', 'promptLogContents', 'users'));
+        return view('admin.index', compact('totalUsers', 'homeVisits', 'promptLogContents', 'users', 'totalPromotions', 'activePromotions', 'currentPromotion'));
     }
 
     public function updateRole(Request $request, User $user)

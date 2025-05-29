@@ -35,6 +35,8 @@ return [
     'collapse' => 'Recolher',
     'loading' => 'Carregando...',
     'please_wait' => 'Aguarde...',
+    'processing' => 'Processando',
+    'copied' => 'Copiado',
     
     // Status & Messages
     'success' => 'Sucesso',

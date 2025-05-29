@@ -83,6 +83,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Translation Management Routes
         Route::get('/translations/{file?}', [TranslationController::class, 'index'])->name('translations.index');
         Route::post('/translations/update', [TranslationController::class, 'update'])->name('translations.update');
+        
+        // Promotion Management Routes
+        Route::resource('promotions', App\Http\Controllers\Admin\PromotionController::class);
+        Route::patch('/promotions/{promotion}/toggle', [App\Http\Controllers\Admin\PromotionController::class, 'toggle'])->name('promotions.toggle');
     });
 });
 

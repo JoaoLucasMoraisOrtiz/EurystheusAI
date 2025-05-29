@@ -11,9 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Chamar apenas o seeder do admin
+        // Chamar seeders necessários
         $this->call([
             AdminUserSeeder::class,
+            PromotionSeeder::class,
         ]);
         
         // Comentar ou remover a criação de usuários de teste

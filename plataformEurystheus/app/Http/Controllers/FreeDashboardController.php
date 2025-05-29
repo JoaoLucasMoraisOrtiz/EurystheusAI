@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\PromptLog;
-use App\Models\LlmResponse; // Adicionar import
+use App\Models\LlmResponse;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
@@ -29,8 +30,12 @@ class FreeDashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Get active promotion for banners
+        $activePromotion = Promotion::getActivePromotion();
+
         return view('free.dashboard', [
             'recentPrompts' => $recentPrompts,
+            'activePromotion' => $activePromotion,
         ]);
     }
 

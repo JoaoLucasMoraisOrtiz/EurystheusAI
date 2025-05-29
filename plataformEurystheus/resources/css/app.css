@@ -22,7 +22,7 @@
         @apply text-sm font-semibold uppercase tracking-wider text-yellow-400;
     }
     .hero-card {
-        @apply bg-gray-800 bg-opacity-70 backdrop-blur-md p-6 md:p-8 rounded-xl shadow-2xl border border-gray-700;
+        @apply bg-gray-800 backdrop-blur-md p-6 md:p-8 rounded-xl shadow-2xl border border-gray-700;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .hero-card:hover {

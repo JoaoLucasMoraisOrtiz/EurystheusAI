@@ -65,14 +65,59 @@
                 <p>{{ $totalUsers }}</p>
             </div>
             <div class="stat-card">
-                <h3>Home Page Visits</h3>
-                <p>{{ $homeVisits }}</p>
-                <small>(Placeholder - Tracking not implemented)</small>
+                <h3>Active Promotions</h3>
+                <p>{{ $activePromotions }}</p>
+                <small>{{ $totalPromotions }} total promotions</small>
             </div>
             <div class="stat-card">
                 <h3>Prompt Logs (Recent)</h3>
                 <p>{{ $promptLogContents->count() }}</p>
                  <small>(Showing latest 50)</small>
+            </div>
+        </div>
+
+        @if($currentPromotion)
+            <div class="content-section">
+                <h2>🎯 Current Active Promotion</h2>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.4em;">{{ $currentPromotion->name }}</h3>
+                            <p style="margin: 5px 0;">Code: <strong>{{ $currentPromotion->code }}</strong></p>
+                            <p style="margin: 5px 0;">
+                                <span style="text-decoration: line-through; opacity: 0.7;">{{ $currentPromotion->formatted_original_price }}</span>
+                                <span style="font-size: 1.2em; font-weight: bold; margin-left: 10px;">{{ $currentPromotion->formatted_discounted_price }}</span>
+                                <span style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-left: 10px;">{{ $currentPromotion->discount_percentage }}% OFF</span>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 0.9em;">
+                                Uses: {{ $currentPromotion->current_uses }}{{ $currentPromotion->max_uses ? ' / ' . $currentPromotion->max_uses : ' (unlimited)' }}
+                            </p>
+                        </div>
+                        <div style="text-align: right;">
+                            <a href="{{ route('admin.promotions.edit', $currentPromotion) }}" 
+                               style="background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">
+                                Edit Promotion
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <div class="content-section">
+            <h2>🎁 Promotion Management</h2>
+            <p>Create and manage promotional campaigns to boost sales conversions.</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <a href="{{ route('admin.promotions.index') }}" 
+                   class="translation-btn"
+                   style="background: #e74c3c; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    📊 Manage Promotions
+                </a>
+                <a href="{{ route('admin.promotions.create') }}" 
+                   class="translation-btn"
+                   style="background: #27ae60; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    ➕ Create New Promotion
+                </a>
             </div>
         </div>
 

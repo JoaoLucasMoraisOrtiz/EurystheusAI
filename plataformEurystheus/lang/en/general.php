@@ -35,6 +35,8 @@ return [
     'collapse' => 'Collapse',
     'loading' => 'Loading...',
     'please_wait' => 'Please wait...',
+    'processing' => 'Processing',
+    'copied' => 'Copied',
     
     // Status & Messages
     'success' => 'Success',

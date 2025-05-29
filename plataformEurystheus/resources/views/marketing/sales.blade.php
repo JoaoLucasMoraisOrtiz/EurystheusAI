@@ -9,14 +9,14 @@
     {{-- <link href="{{ asset('css/marketing.css') }}" rel="stylesheet"> --}} {{-- Assuming styles will be handled by app.css or inline --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        .font-orbitron {
-            font-family: 'Orbitron', sans-serif;
+        .font-inter {
+            font-family: 'Inter', sans-serif;
         }
         .dark .dark\:bg-black {
             background-color: #000;
@@ -73,7 +73,7 @@
         <header class="bg-gray-900 shadow-md sticky top-0 z-50">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div>
-                    <a href="{{ route('marketing.home') }}" class="text-2xl font-orbitron font-bold text-amber-400 hover:text-amber-300 transition-colors">
+                    <a href="{{ route('marketing.home') }}" class="text-2xl font-inter font-bold text-amber-400 hover:text-amber-300 transition-colors">
                         {{ __('marketing.sales_header_brand') }}
                     </a>
                 </div>
@@ -87,7 +87,7 @@
 
         <main class="container mx-auto px-6 py-12">
             <section class="text-center mb-16">
-                <h1 class="text-5xl font-orbitron font-extrabold text-white">
+                <h1 class="text-5xl font-inter font-extrabold text-white">
                     {{ __('marketing.sales_main_heading_1') }} <span class="text-amber-400">{{ __('marketing.sales_main_heading_2') }}</span>.
                 </h1>
                 <p class="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
@@ -98,7 +98,7 @@
             <section class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {{-- Free Plan --}}
                 <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 flex flex-col transform hover:scale-105 transition-transform duration-300">
-                    <h2 class="text-3xl font-orbitron font-bold text-white mb-2">{{ __('marketing.sales_plan_apprentice_title') }}</h2>
+                    <h2 class="text-3xl font-inter font-bold text-white mb-2">{{ __('marketing.sales_plan_apprentice_title') }}</h2>
                     <p class="text-amber-400 text-5xl font-extrabold mb-4">{{ __('marketing.sales_plan_apprentice_price') }}</p>
                     <p class="text-gray-400 mb-6 text-sm">{{ __('marketing.sales_plan_apprentice_desc') }}</p>
                     <ul class="text-gray-300 space-y-3 mb-8 flex-grow">
@@ -115,7 +115,7 @@
                 {{-- Paid Plan (Most Popular) --}}
                 <div class="bg-amber-400 text-gray-900 p-8 rounded-lg shadow-2xl border-2 border-amber-500 relative flex flex-col transform scale-105 hover:scale-110 transition-transform duration-300">
                     <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 text-amber-400 px-4 py-1 text-sm font-semibold rounded-full shadow-lg">{{ __('marketing.sales_plan_hero_badge') }}</span>
-                    <h2 class="text-3xl font-orbitron font-bold mb-2">{{ __('marketing.sales_plan_hero_title') }}</h2>
+                    <h2 class="text-3xl font-inter font-bold mb-2">{{ __('marketing.sales_plan_hero_title') }}</h2>
                     <div class="mb-4">
                         <span class="text-5xl font-extrabold">{{ __('marketing.sales_plan_hero_price') }}</span>
                         <span class="text-lg opacity-90">{{ __('marketing.sales_plan_hero_period') }}</span>
@@ -136,7 +136,7 @@
 
                 {{-- Enterprise/Custom Plan --}}
                 <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 flex flex-col transform hover:scale-105 transition-transform duration-300">
-                    <h2 class="text-3xl font-orbitron font-bold text-white mb-2">{{ __('marketing.sales_plan_titan_title') }}</h2>
+                    <h2 class="text-3xl font-inter font-bold text-white mb-2">{{ __('marketing.sales_plan_titan_title') }}</h2>
                      <p class="text-amber-400 text-5xl font-extrabold mb-4">{{ __('marketing.sales_plan_titan_price') }}</p>
                     <p class="text-gray-400 mb-6 text-sm">{{ __('marketing.sales_plan_titan_desc') }}</p>
                     <ul class="text-gray-300 space-y-3 mb-8 flex-grow">
@@ -155,7 +155,7 @@
 
             {{-- Social Proof Section --}}
             <section class="mt-24">
-                <h2 class="text-4xl font-orbitron font-bold text-center text-white mb-12">{{ __('marketing.sales_testimonials_heading') }}</h2>
+                <h2 class="text-4xl font-inter font-bold text-center text-white mb-12">{{ __('marketing.sales_testimonials_heading') }}</h2>
                 <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
                     <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
                         <div class="flex items-center mb-4">
@@ -179,7 +179,7 @@
             </section>
 
             <section class="mt-24 text-center">
-                 <h2 class="text-4xl font-orbitron font-bold text-white mb-12">{{ __('marketing.sales_faq_heading') }}</h2>
+                 <h2 class="text-4xl font-inter font-bold text-white mb-12">{{ __('marketing.sales_faq_heading') }}</h2>
                  <div class="max-w-4xl mx-auto text-left space-y-6">
                      <details class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 group">
                          <summary class="font-semibold text-lg text-white cursor-pointer list-none flex justify-between items-center group-open:text-amber-400 transition-colors">
@@ -209,7 +209,7 @@
         <footer class="bg-gray-900 border-t border-gray-700 mt-24">
             <div class="container mx-auto px-6 py-10 text-center text-gray-400">
                 <p>&copy; {{ date('Y') }} {{ __('marketing.sales_header_brand') }}. {{ __('marketing.sales_footer_rights') }}</p>
-                 <p class="mt-2 text-sm font-orbitron">{{ __('marketing.sales_footer_tagline') }}</p>
+                 <p class="mt-2 text-sm font-inter">{{ __('marketing.sales_footer_tagline') }}</p>
             </div>
         </footer>
     </div>
