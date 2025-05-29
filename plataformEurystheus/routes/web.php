@@ -92,6 +92,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // System Settings Routes
         Route::get('/settings', [App\Http\Controllers\Admin\SystemSettingsController::class, 'index'])->name('settings.index');
         Route::match(['POST', 'PATCH'], '/settings', [App\Http\Controllers\Admin\SystemSettingsController::class, 'update'])->name('settings.update');
+
+        // Security Dashboard Routes
+        Route::prefix('security')->name('security.')->group(function () {
+            Route::get('/dashboard', [\App\Http\Controllers\SecurityDashboardController::class, 'index'])->name('dashboard');
+            Route::post('/resolve-alert/{alertId}', [\App\Http\Controllers\SecurityDashboardController::class, 'resolveAlert'])->name('resolve-alert');
+            Route::post('/unblock-ip/{ipId}', [\App\Http\Controllers\SecurityDashboardController::class, 'unblockIp'])->name('unblock-ip');
+            Route::get('/export', [\App\Http\Controllers\SecurityDashboardController::class, 'exportData'])->name('export');
+        });
+
+        // Analytics Routes
+        Route::prefix('analytics')->name('analytics.')->group(function () {
+            Route::get('/refresh', [AdminController::class, 'refreshAnalytics'])->name('refresh');
+            Route::get('/export/{type}', [AdminController::class, 'exportData'])->name('export');
+        });
     });
 });
 
