@@ -166,4 +166,12 @@ return [
     'unlock_premium_features' => 'Unlock premium features',
     'try_premium' => 'Try Premium',
     'offer_ends_in' => 'Offer ends in',
+    'prompts_usage' => 'Prompts Usage',
+    'usage_limit_info' => 'Limit for free users',
+    'remaining' => 'remaining',
+    'used' => 'used',
+    'limit_reached' => 'Limit reached! Upgrade to continue.',
+    'limit_warning' => 'Few prompts left. Consider upgrading!',
+    'limit_reached_short' => 'Limit Reached',
+    'upgrade_to_continue' => 'Upgrade to continue generating prompts.',
 ];

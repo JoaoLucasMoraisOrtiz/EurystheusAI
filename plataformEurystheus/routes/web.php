@@ -64,6 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Route for free users to submit their scope and get prompt suggestions
     Route::post('/dashboard/prompt', [FreeDashboardController::class, 'storePrompt'])
+         ->middleware('check.prompt.limit')
          ->name('free.dashboard.prompt'); // This can be used by free users or as a general prompt creation endpoint
 
     // Route to get a specific prompt log (perhaps for display or retry, might be more for free tier)
@@ -87,6 +88,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Promotion Management Routes
         Route::resource('promotions', App\Http\Controllers\Admin\PromotionController::class);
         Route::patch('/promotions/{promotion}/toggle', [App\Http\Controllers\Admin\PromotionController::class, 'toggle'])->name('promotions.toggle');
+        
+        // System Settings Routes
+        Route::get('/settings', [App\Http\Controllers\Admin\SystemSettingsController::class, 'index'])->name('settings.index');
+        Route::match(['POST', 'PATCH'], '/settings', [App\Http\Controllers\Admin\SystemSettingsController::class, 'update'])->name('settings.update');
     });
 });
 

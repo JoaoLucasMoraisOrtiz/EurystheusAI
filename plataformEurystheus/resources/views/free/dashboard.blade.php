@@ -183,6 +183,48 @@
         </div> -->
     </div>
 
+    <!-- Usage Counter Widget -->
+    <div class="container mx-auto px-6 pb-4">
+        <div class="bg-gray-800 rounded-lg p-4 border border-gray-700">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="text-2xl">📊</div>
+                    <div>
+                        <h4 class="text-white font-semibold">{{ __('dashboard.prompts_usage') }}</h4>
+                        <p class="text-gray-400 text-sm">{{ __('dashboard.usage_limit_info') }}</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold {{ $promptsRemaining > 5 ? 'text-green-400' : ($promptsRemaining > 0 ? 'text-yellow-400' : 'text-red-400') }}">
+                        {{ $promptsRemaining }}
+                    </div>
+                    <div class="text-sm text-gray-400">{{ __('dashboard.remaining') }}</div>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="mt-3">
+                <div class="flex justify-between text-xs text-gray-400 mb-1">
+                    <span>{{ $promptsUsed }}/{{ $promptsLimit }} {{ __('dashboard.used') }}</span>
+                    <span>{{ number_format(($promptsUsed / $promptsLimit) * 100, 1) }}%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r {{ $promptsRemaining > 5 ? 'from-green-500 to-green-400' : ($promptsRemaining > 0 ? 'from-yellow-500 to-yellow-400' : 'from-red-500 to-red-400') }} h-2 rounded-full transition-all duration-300" 
+                         style="width: {{ min(100, ($promptsUsed / $promptsLimit) * 100) }}%"></div>
+                </div>
+                @if($promptsRemaining == 0)
+                    <div class="mt-2 text-red-400 text-sm font-medium">
+                        {{ __('dashboard.limit_reached') }}
+                    </div>
+                @elseif($promptsRemaining <= 3)
+                    <div class="mt-2 text-yellow-400 text-sm font-medium">
+                        {{ __('dashboard.limit_warning') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Upgrade Prompt -->
     <div class="fixed bottom-6 right-6 z-50" 
          x-data="{ showFloating: false }" 
@@ -216,8 +258,32 @@
     <main class="container mx-auto px-6 py-10 flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Form Card -->
-            <div class="bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-700">
-                <h2 class="text-2xl font-semibold text-gray-100 mb-6">{{ __('dashboard.new_agent') }}</h2>
+            <div class="bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-700 {{ $promptsRemaining == 0 ? 'opacity-60' : '' }}">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-100">{{ __('dashboard.new_agent') }}</h2>
+                    @if($promptsRemaining == 0)
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            {{ __('dashboard.limit_reached_short') }}
+                        </span>
+                    @endif
+                </div>
+                
+                @if($promptsRemaining == 0)
+                    <div class="bg-red-900/20 border border-red-500 rounded-lg p-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="text-red-400 text-xl">🚫</div>
+                            <div>
+                                <h4 class="text-red-400 font-semibold">{{ __('dashboard.limit_reached') }}</h4>
+                                <p class="text-red-300 text-sm">{{ __('dashboard.upgrade_to_continue') }}</p>
+                                <a href="{{ route('marketing.sales') }}" 
+                                   class="inline-block mt-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    {{ __('dashboard.upgrade_now') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                
                 <form id="agentForm" method="POST" action="{{ route('free.dashboard.prompt') }}" class="space-y-4">
                     @csrf
                     @php
@@ -233,13 +299,18 @@
                     @foreach($fields as $key => $label)
                         <div>
                             <label for="scope_{{ $key }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $label }}</label>
-                            <input id="scope_{{ $key }}" name="scope[{{ $key }}]" type="text" required
-                                class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-100 focus:ring-2 focus:ring-yellow-400 focus:outline-none">
+                            <input id="scope_{{ $key }}" name="scope[{{ $key }}]" type="text" {{ $key === 'objective' || $key === 'deadlines' ? 'required' : '' }}
+                                {{ $promptsRemaining == 0 ? 'disabled' : '' }}
+                                class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-100 focus:ring-2 focus:ring-yellow-400 focus:outline-none {{ $promptsRemaining == 0 ? 'opacity-50 cursor-not-allowed' : '' }}">
                         </div>
                     @endforeach
-                    <button type="submit" class="w-full flex justify-center items-center mt-4 bg-gradient-to-r from-orange-500 to-orange-600 dark:from-yellow-400 dark:to-yellow-500 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 dark:focus:ring-yellow-400">
-                        {{ __('dashboard.generate_prompt') }}
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <button type="submit" 
+                            {{ $promptsRemaining == 0 ? 'disabled' : '' }}
+                            class="w-full flex justify-center items-center mt-4 {{ $promptsRemaining == 0 ? 'bg-gray-600 cursor-not-allowed' : 'bg-gradient-to-r from-orange-500 to-orange-600 dark:from-yellow-400 dark:to-yellow-500 hover:scale-105' }} text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 dark:focus:ring-yellow-400">
+                        {{ $promptsRemaining == 0 ? __('dashboard.limit_reached_short') : __('dashboard.generate_prompt') }}
+                        @if($promptsRemaining > 0)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        @endif
                     </button>
                 </form>
             </div>

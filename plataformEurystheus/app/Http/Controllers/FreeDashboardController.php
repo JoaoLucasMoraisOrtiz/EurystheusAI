@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PromptLog;
 use App\Models\LlmResponse;
 use App\Models\Promotion;
+use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
@@ -33,9 +34,17 @@ class FreeDashboardController extends Controller
         // Get active promotion for banners
         $activePromotion = Promotion::getActivePromotion();
 
+        // Get prompts usage for free users
+        $promptsUsed = PromptLog::where('anonymous_user', Auth::id())->count();
+        $promptsLimit = SystemSetting::get('free_user_prompt_limit', 15);
+        $promptsRemaining = max(0, $promptsLimit - $promptsUsed);
+
         return view('free.dashboard', [
             'recentPrompts' => $recentPrompts,
             'activePromotion' => $activePromotion,
+            'promptsUsed' => $promptsUsed,
+            'promptsLimit' => $promptsLimit,
+            'promptsRemaining' => $promptsRemaining,
         ]);
     }
 
@@ -50,10 +59,10 @@ class FreeDashboardController extends Controller
             'scope.deadlines' => 'required|string|max:1000',
         ]);
 
-        // Verificar limite de 20 registros
+        // Verificar limite de 15 registros para usuários gratuitos
         $count = PromptLog::where('anonymous_user', Auth::id())->count();
-        if ($count >= 20) {
-            return back()->withErrors(['limit' => 'Você atingiu o limite de 20 prompts para usuários gratuitos.'])->withInput();
+        if ($count >= 15) {
+            return back()->withErrors(['limit' => 'Você atingiu o limite de 15 prompts para usuários gratuitos. Faça upgrade para continuar usando a plataforma!'])->withInput();
         }
 
         $userScope = $request->input('scope');

@@ -166,4 +166,12 @@ return [
     'unlock_premium_features' => 'Desbloqueie recursos premium',
     'try_premium' => 'Testar Premium',
     'offer_ends_in' => 'Oferta termina em',
+    'prompts_usage' => 'Uso de Prompts',
+    'usage_limit_info' => 'Limite para usuários gratuitos',
+    'remaining' => 'restantes',
+    'used' => 'usados',
+    'limit_reached' => 'Limite atingido! Faça upgrade para continuar.',
+    'limit_warning' => 'Poucos prompts restantes. Considere fazer upgrade!',
+    'limit_reached_short' => 'Limite Atingido',
+    'upgrade_to_continue' => 'Faça upgrade para continuar gerando prompts.',
 ];

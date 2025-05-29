@@ -122,6 +122,18 @@
         </div>
 
         <div class="content-section">
+            <h2>⚙️ System Settings</h2>
+            <p>Configure system-wide settings including user prompt limits and other parameters.</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <a href="{{ route('admin.settings.index') }}" 
+                   class="translation-btn"
+                   style="background: #9b59b6; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: 500; transition: background-color 0.3s;">
+                    🛠️ Manage Settings
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
             <h2>Translation Management</h2>
             <p>Manage language translations for the website interface.</p>
             <div style="display: flex; gap: 15px; margin-top: 20px;">
