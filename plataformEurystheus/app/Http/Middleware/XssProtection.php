@@ -80,13 +80,16 @@ class XssProtection
         $response->headers->set('X-XSS-Protection', '1; mode=block');
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
         
-        // Content Security Policy
+        // Content Security Policy with Vite support for development
+        $isDev = app()->environment('local');
+        $viteConnect = $isDev ? ' http://127.0.0.1:5173 ws://127.0.0.1:5173' : '';
+        
         $csp = "default-src 'self'; " .
-               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; " .
-               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " .
+               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdn.tailwindcss.com" . ($isDev ? " http://127.0.0.1:5173" : "") . "; " .
+               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" . ($isDev ? " http://127.0.0.1:5173" : "") . "; " .
                "font-src 'self' https://fonts.gstatic.com; " .
                "img-src 'self' data: https:; " .
-               "connect-src 'self'; " .
+               "connect-src 'self'" . $viteConnect . "; " .
                "frame-ancestors 'none';";
                
         $response->headers->set('Content-Security-Policy', $csp);

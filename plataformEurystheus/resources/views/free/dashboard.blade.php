@@ -299,9 +299,10 @@
                     @foreach($fields as $key => $label)
                         <div>
                             <label for="scope_{{ $key }}" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ $label }}</label>
-                            <input id="scope_{{ $key }}" name="scope[{{ $key }}]" type="text" {{ $key === 'objective' || $key === 'deadlines' ? 'required' : '' }}
+                            <textarea id="scope_{{ $key }}" name="scope[{{ $key }}]" rows="3" {{ $key === 'objective' || $key === 'deadlines' ? 'required' : '' }}
                                 {{ $promptsRemaining == 0 ? 'disabled' : '' }}
-                                class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-100 focus:ring-2 focus:ring-yellow-400 focus:outline-none {{ $promptsRemaining == 0 ? 'opacity-50 cursor-not-allowed' : '' }}">
+                                class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-gray-100 focus:ring-2 focus:ring-yellow-400 focus:outline-none resize-y {{ $promptsRemaining == 0 ? 'opacity-50 cursor-not-allowed' : '' }}"
+                                placeholder="{{ $label }}"></textarea>
                         </div>
                     @endforeach
                     <button type="submit" 

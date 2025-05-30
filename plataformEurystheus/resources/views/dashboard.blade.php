@@ -514,27 +514,27 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="scope_objective">🎯 {{ __('dashboard.prompt_objective') }}</label>
-                        <input type="text" id="scope_objective" name="scope[objective]" class="placeholder-input" required value="{{ old('scope.objective') }}" placeholder="{{ __('dashboard.title_placeholder') }}">
+                        <textarea id="scope_objective" name="scope[objective]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.title_placeholder') }}">{{ old('scope.objective') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="scope_constraints">⚡ {{ __('dashboard.constraints') }}</label>
-                        <input type="text" id="scope_constraints" name="scope[constraints]" class="placeholder-input" required value="{{ old('scope.constraints') }}" placeholder="{{ __('dashboard.constraints_placeholder') }}">
+                        <textarea id="scope_constraints" name="scope[constraints]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.constraints_placeholder') }}">{{ old('scope.constraints') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="scope_data">📊 {{ __('dashboard.available_data') }}</label>
-                        <input type="text" id="scope_data" name="scope[data]" class="placeholder-input" required value="{{ old('scope.data') }}" placeholder="{{ __('dashboard.data_placeholder') }}">
+                        <textarea id="scope_data" name="scope[data]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.data_placeholder') }}">{{ old('scope.data') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="scope_audience">👥 {{ __('dashboard.target_audience') }}</label>
-                        <input type="text" id="scope_audience" name="scope[audience]" class="placeholder-input" required value="{{ old('scope.audience') }}" placeholder="{{ __('dashboard.audience_placeholder') }}">
+                        <textarea id="scope_audience" name="scope[audience]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.audience_placeholder') }}">{{ old('scope.audience') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="scope_output_format">📋 {{ __('dashboard.output_format') }}</label>
-                        <input type="text" id="scope_output_format" name="scope[output_format]" class="placeholder-input" required value="{{ old('scope.output_format') }}" placeholder="{{ __('dashboard.output_format_placeholder') }}">
+                        <textarea id="scope_output_format" name="scope[output_format]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.output_format_placeholder') }}">{{ old('scope.output_format') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="scope_deadlines">📅 {{ __('dashboard.deadlines') }}</label>
-                        <input type="text" id="scope_deadlines" name="scope[deadlines]" class="placeholder-input" required value="{{ old('scope.deadlines') }}" placeholder="{{ __('dashboard.deadlines_placeholder') }}">
+                        <textarea id="scope_deadlines" name="scope[deadlines]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.deadlines_placeholder') }}">{{ old('scope.deadlines') }}</textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn-primary">

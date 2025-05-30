@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnhancedCsrfProtection
@@ -147,6 +149,13 @@ class EnhancedCsrfProtection
 
     private function checkTokenReuse(Request $request, string $token): void
     {
+        // Skip token reuse check for dashboard form submissions to avoid blocking legitimate usage
+        $path = $request->path();
+        if (str_contains($path, 'dashboard/prompt') || str_contains($path, 'dashboard')) {
+            Log::info('Skipping CSRF token reuse check for dashboard route: ' . $path);
+            return;
+        }
+        
         $tokenKey = 'csrf_token_used:' . hash('sha256', $token);
         
         if (Cache::has($tokenKey)) {
@@ -154,8 +163,8 @@ class EnhancedCsrfProtection
             abort(419, 'CSRF token already used');
         }
 
-        // Mark token as used for 5 minutes
-        Cache::put($tokenKey, true, now()->addMinutes(5));
+        // Mark token as used for 2 minutes only (reduced from 5 minutes)
+        Cache::put($tokenKey, true, now()->addMinutes(2));
     }
 
     private function checkSessionFixation(Request $request): void

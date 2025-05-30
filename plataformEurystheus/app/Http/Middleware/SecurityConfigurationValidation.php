@@ -34,6 +34,11 @@ class SecurityConfigurationValidation
      */
     public function handle(Request $request, Closure $next)
     {
+        // Skip security configuration validation in local environment
+        if (app()->environment('local')) {
+            return $next($request);
+        }
+        
         // Check configuration only once per hour to avoid performance impact
         $cacheKey = 'security_config_validated';
         if (!Cache::has($cacheKey)) {
