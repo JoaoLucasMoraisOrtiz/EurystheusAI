@@ -185,6 +185,6 @@ class SecurityEvent extends Model
             self::TYPE_MALWARE_DETECTED => 'Malware Detected',
             self::TYPE_PHISHING_ATTEMPT => 'Phishing Attempt',
             default => ucfirst(str_replace('_', ' ', $this->event_type))
-        ];
+        };
     }
 }
