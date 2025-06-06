@@ -27,6 +27,30 @@ class DashboardController extends Controller
             $promptLogs = $user->promptLogs()->with('llmResponse')->latest()->get();
         }
         
+        // Adiciona prompts da sessão atual (incluindo prompts do chat)
+        $sessionPrompts = collect();
+        $generatedPromptId = session('generated_prompt_id');
+        $contextPromptId = session('context_prompt_id');
+        
+        if ($contextPromptId) {
+            // Carrega o prompt de contexto com LlmResponse (este é o principal)
+            $contextPrompt = PromptLog::with(['llmResponse', 'parent'])->find($contextPromptId);
+            if ($contextPrompt) {
+                $sessionPrompts->push($contextPrompt);
+            }
+        }
+        
+        if ($generatedPromptId && $contextPromptId != $generatedPromptId) {
+            // Carrega o prompt otimizado se for diferente do contexto
+            $sessionPrompt = PromptLog::with(['llmResponse', 'parent'])->find($generatedPromptId);
+            if ($sessionPrompt) {
+                $sessionPrompts->push($sessionPrompt);
+            }
+        }
+        
+        // Merge session prompts with user prompts (session prompts first)
+        $promptLogs = $sessionPrompts->merge($promptLogs);
+        
         return view('dashboard', compact('user', 'promptLogs'));
     }
 

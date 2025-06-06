@@ -440,6 +440,7 @@
             }
         }
     </style>
+    @include('prompt.chatHeader')
 </head>
 <body class="font-sans antialiased theme-light">
     <!-- Loading Overlay - visibility controlled by JS by adding/removing .visible class -->
@@ -506,41 +507,14 @@
             <p><strong>{{ __('general.created_at') }}:</strong> {{ $user->created_at->format('M d, Y') }}</p>
         </div> -->
 
+
         @if($user->isPayed() || $user->isAdmin())
         <div class="content-section">
-            <h3>{{ __('dashboard.create_prompt') }}</h3>
-            <form id="paidAgentForm" method="POST" action="{{ route('free.dashboard.prompt') }}">
-                @csrf
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="scope_objective">🎯 {{ __('dashboard.prompt_objective') }}</label>
-                        <textarea id="scope_objective" name="scope[objective]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.title_placeholder') }}">{{ old('scope.objective') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope_constraints">⚡ {{ __('dashboard.constraints') }}</label>
-                        <textarea id="scope_constraints" name="scope[constraints]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.constraints_placeholder') }}">{{ old('scope.constraints') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope_data">📊 {{ __('dashboard.available_data') }}</label>
-                        <textarea id="scope_data" name="scope[data]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.data_placeholder') }}">{{ old('scope.data') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope_audience">👥 {{ __('dashboard.target_audience') }}</label>
-                        <textarea id="scope_audience" name="scope[audience]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.audience_placeholder') }}">{{ old('scope.audience') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope_output_format">📋 {{ __('dashboard.output_format') }}</label>
-                        <textarea id="scope_output_format" name="scope[output_format]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.output_format_placeholder') }}">{{ old('scope.output_format') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="scope_deadlines">📅 {{ __('dashboard.deadlines') }}</label>
-                        <textarea id="scope_deadlines" name="scope[deadlines]" class="placeholder-input" rows="3" required placeholder="{{ __('dashboard.deadlines_placeholder') }}">{{ old('scope.deadlines') }}</textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary">
-                    <span>{{ __('dashboard.generate_blueprint') }}</span>
-                </button>
-            </form>
+            <!-- <h3>{{ __('dashboard.create_prompt') }}</h3>
+            <div class="mb-4">
+                <a href="{{ route('prompt.chat') }}" class="btn-primary" style="display:inline-block;">Abrir Assistente de Criação de Prompt (Chat)</a>
+            </div> -->
+            @include('prompt.chat')
         </div>
         @endif
         
@@ -626,16 +600,16 @@
                                         </div> <!-- .generated-prompt -->
                                     @endforeach
                                 @else
-                                    <p>{{ __('dashboard.no_generated_prompts_message') }}</p>
+                                    <p>Não existem prompts automáticos disponíveis no momento. Verifique se a IA está configurada corretamente ou crie um novo prompt manualmente.</p>
                                 @endif
                             @else
-                                <p>{{ __('dashboard.no_llm_response_message') }}</p>
+                                <p>Não foi possível obter resposta automática no momento. Tente novamente ou revise a configuração da IA.</p>
                             @endif
                         </div> <!-- .blueprint-details -->
                         </div> <!-- .prompt-log-item -->
                     @endforeach
                 @else
-                    <p>{{ __('dashboard.no_prompt_blueprints_message') }}</p>
+                    <p>Nenhum blueprint encontrado. Crie novos prompts para prosseguir.</p>
                 @endif
             @elseif($user->isFree())
                 <h3>🆓 {{ __('dashboard.free_user_dashboard') }}</h3>

@@ -19,6 +19,11 @@ class EnhancedCsrfProtection
         'api/*',           // API routes typically use token authentication
         'webhooks/*',      // Webhook endpoints
         'health-check',    // Health check endpoint
+        'prompt/chat/message', // Chat message endpoint
+        'login',           // Login endpoint
+        'register',        // Register endpoint
+        'password/*',      // Password reset endpoints
+        'logout'
     ];
 
     public function handle(Request $request, Closure $next): Response

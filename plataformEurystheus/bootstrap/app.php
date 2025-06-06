@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Web-specific middleware
         $middleware->web(append: [
             \App\Http\Middleware\SetLocale::class,
-            \App\Http\Middleware\EnhancedCsrfProtection::class,
+            // \App\Http\Middleware\EnhancedCsrfProtection::class, // Temporariamente desabilitado para debug
             \App\Http\Middleware\SecureSessionManagement::class,
         ]);
         

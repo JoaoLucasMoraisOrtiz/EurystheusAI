@@ -114,3 +114,12 @@ Route::prefix('api/analytics')->group(function () {
     Route::post('/page-view', [App\Http\Controllers\AnalyticsController::class, 'trackPageView']);
     Route::post('/button-click', [App\Http\Controllers\AnalyticsController::class, 'trackButtonClick']);
 });
+
+// Prompt Chat (LLM-guided prompt creation)
+use App\Http\Controllers\PromptChatController;
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/prompt/chat', [PromptChatController::class, 'index'])->name('prompt.chat');
+    Route::post('/prompt/chat/message', [PromptChatController::class, 'message'])->name('prompt.chat.message');
+    Route::post('/prompt/chat/reset', [PromptChatController::class, 'reset'])->name('prompt.chat.reset');
+    Route::get('/prompt/saved/json', [PromptChatController::class, 'getSavedPrompt'])->name('prompt.saved.json');
+});

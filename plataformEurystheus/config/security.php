@@ -414,4 +414,33 @@ return [
             'retention_days' => 1095, // 3 years
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | External API Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for allowing outbound requests to external APIs.
+    | This ensures the security system doesn't block legitimate API calls.
+    |
+    */
+
+    'external_apis' => [
+        'enabled' => env('SECURITY_EXTERNAL_APIS_ENABLED', true),
+        
+        'allowed_domains' => [
+            'generativelanguage.googleapis.com', // Google Gemini API
+            'api.openai.com', // OpenAI API (if needed in future)
+            'api.anthropic.com', // Anthropic API (if needed in future)
+        ],
+        
+        'timeout' => env('SECURITY_API_TIMEOUT', 30), // 30 seconds
+        'max_retries' => env('SECURITY_API_MAX_RETRIES', 3),
+        
+        'monitoring' => [
+            'log_requests' => env('SECURITY_LOG_API_REQUESTS', true),
+            'track_response_times' => true,
+            'alert_on_failures' => true,
+        ],
+    ],
 ];

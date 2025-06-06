@@ -34,7 +34,10 @@ class SecureSessionManagement
         if (app()->environment('local')) {
             return $next($request);
         }
-        
+
+        // Garantir que $session esteja sempre definido
+        $session = $request->session();
+
         // Validate session security
         $this->validateSessionSecurity($request);
 
@@ -69,7 +72,7 @@ class SecureSessionManagement
         // Force proper session cookie settings
         $sessionConfig = config('session');
         $isSecure = $request->secure();
-        
+
         // Set session cookie parameters before checking
         session_set_cookie_params([
             'lifetime' => $sessionConfig['lifetime'] * 60, // Convert minutes to seconds
@@ -92,17 +95,17 @@ class SecureSessionManagement
 
         // Validate session cookie settings after configuration
         $cookieParams = session_get_cookie_params();
-        
+
         $securityIssues = [];
-        
+
         if (!$cookieParams['secure'] && $request->secure()) {
             $securityIssues[] = 'Session cookie not marked as secure';
         }
-        
+
         if (!$cookieParams['httponly']) {
             $securityIssues[] = 'Session cookie not marked as HTTP-only';
         }
-        
+
         if ($cookieParams['samesite'] !== 'strict' && $cookieParams['samesite'] !== 'lax') {
             $securityIssues[] = 'Session cookie SameSite not properly configured';
         }
@@ -123,7 +126,7 @@ class SecureSessionManagement
     private function detectSessionHijacking(Request $request): void
     {
         $session = $request->session();
-        
+
         if (!$session->has('_authenticated') || !auth()->check()) {
             return;
         }
@@ -160,7 +163,7 @@ class SecureSessionManagement
         // Check for IP address changes (allow some flexibility for mobile networks)
         $storedIp = $session->get('_session_ip');
         $currentIp = $request->ip();
-        
+
         if ($storedIp && $currentIp !== $storedIp) {
             // Log IP change but don't immediately invalidate (could be legitimate)
             Log::warning('Session IP address changed', [
@@ -173,7 +176,7 @@ class SecureSessionManagement
 
             // Update stored IP
             $session->put('_session_ip', $currentIp);
-            
+
             // Store IP change for monitoring
             $this->recordIpChange($request, $storedIp, $currentIp);
         }
@@ -185,7 +188,7 @@ class SecureSessionManagement
     private function handleSessionRegeneration(Request $request): void
     {
         $session = $request->session();
-        
+
         if (!auth()->check()) {
             return;
         }
@@ -196,10 +199,10 @@ class SecureSessionManagement
         // Regenerate session ID periodically
         if ($currentTime - $lastRegeneration > self::SESSION_REGENERATE_INTERVAL) {
             $oldSessionId = $session->getId();
-            
+
             $session->regenerate(true); // Delete old session
             $session->put('_last_regeneration', $currentTime);
-            
+
             Log::info('Session regenerated', [
                 'user_id' => auth()->id(),
                 'old_session_id' => $oldSessionId,
@@ -215,7 +218,7 @@ class SecureSessionManagement
     private function enforceSessionTimeout(Request $request): void
     {
         $session = $request->session();
-        
+
         if (!auth()->check()) {
             return;
         }
@@ -272,11 +275,11 @@ class SecureSessionManagement
         $userId = auth()->id();
         $currentSessionId = $request->session()->getId();
         $cacheKey = "user_sessions_{$userId}";
-        
+
         $activeSessions = Cache::get($cacheKey, []);
-        
+
         // Clean up expired sessions
-        $activeSessions = array_filter($activeSessions, function($sessionData) {
+        $activeSessions = array_filter($activeSessions, function ($sessionData) {
             return time() - $sessionData['last_activity'] < config('session.lifetime') * 60;
         });
 
@@ -291,7 +294,7 @@ class SecureSessionManagement
         // Check if we exceed the limit
         if (count($activeSessions) > self::MAX_CONCURRENT_SESSIONS) {
             // Sort by last activity and remove oldest sessions
-            uasort($activeSessions, function($a, $b) {
+            uasort($activeSessions, function ($a, $b) {
                 return $a['last_activity'] <=> $b['last_activity'];
             });
 
@@ -340,11 +343,11 @@ class SecureSessionManagement
         // Store in cache for recent activity monitoring
         $recentActivityKey = "recent_activity_{$userId}";
         $recentActivity = Cache::get($recentActivityKey, []);
-        
+
         // Keep only last 10 activities
         array_unshift($recentActivity, $activityData);
         $recentActivity = array_slice($recentActivity, 0, 10);
-        
+
         Cache::put($recentActivityKey, $recentActivity, 3600);
 
         // Detect suspicious patterns
@@ -390,7 +393,7 @@ class SecureSessionManagement
             for ($i = 0; $i < count($timestamps) - 1; $i++) {
                 $timeDiffs[] = $timestamps[$i] - $timestamps[$i + 1];
             }
-            
+
             $avgTimeDiff = array_sum($timeDiffs) / count($timeDiffs);
             if ($avgTimeDiff < 2) { // Less than 2 seconds between requests
                 Log::warning('Rapid requests detected - possible automation', [
@@ -442,7 +445,7 @@ class SecureSessionManagement
         // Invalidate session
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         auth()->logout();
     }
 
@@ -499,7 +502,7 @@ class SecureSessionManagement
 
         // Session security headers
         $response->header('X-Session-Security', 'enforced');
-        
+
         return $response;
     }
 }

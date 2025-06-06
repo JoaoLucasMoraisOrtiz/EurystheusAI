@@ -80,6 +80,8 @@ class SecurityMonitoring
         if ($request->is('dashboard*') || 
             $request->is('free/*') || 
             $request->is('api/generate-prompt') ||
+            $request->is('prompt/*') ||
+            $request->is('prompt/chat*') ||
             str_contains($request->path(), 'dashboard') ||
             str_contains($request->path(), 'prompt') ||
             $request->path() === 'dashboard/prompt') {
